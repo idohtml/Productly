@@ -3,6 +3,9 @@
 :root {
   --clr-primary-500: #ff9900;
   --clr-primary-600: #eb8d00;
+  --clr-outline-200: #e5e7eb;
+  --clr-outline-300: #d1d5db;
+  --clr-outline-500: #6b7280;
 }
 
 *,
@@ -92,16 +95,43 @@ select {
 /* CSS RESET */
 
 /* Grid */
+.grid {
+  display: grid;
+}
+
+.grid-center {
+  place-items: center;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
 
 /* Header + Navigation bar */
+header {
+  padding: 16px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 2rem 0;
-  max-width: 1400px;
-  margin: 0 auto;
+  margin-top: 16px;
 }
 
 .header h2 {
@@ -119,6 +149,11 @@ select {
   margin-right: 20px;
 }
 
+.button-box {
+  display: flex;
+  gap: 14px;
+}
+
 /* Button variants */
 button {
   padding: 10px 24px;
@@ -126,6 +161,75 @@ button {
   border-radius: 4px;
 }
 
-button[role="primary"],
-button[role="outline"] {
+button[variant="primary"] {
+  background-color: var(--clr-primary-500);
+  color: white;
+
+  &:hover {
+    background-color: var(--clr-primary-600);
+  }
+}
+
+button[variant="outline"] {
+  background-color: transparent;
+  border: 1px solid var(--clr-outline-200);
+
+  &:hover {
+    background-color: var(--clr-outline-300);
+  }
+}
+
+button[variant="underline"] {
+  background-color: transparent;
+  border: none;
+  color: var(--clr-primary-500);
+  text-decoration: underline;
+}
+
+/* Titles */
+.heading-primary {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* Section */
+section {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.section-hero {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-hero p {
+  font-size: 18px;
+  margin-bottom: 34px;
+  line-height: 1.8;
+}
+
+.hero-image {
+  position: relative;
+  object-fit: contain;
+}
+
+.hero-image::before {
+  content: "";
+  background-image: url(/images/blob.svg);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  width: 467px;
+  height: 438px;
 }
